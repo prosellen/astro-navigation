@@ -1,0 +1,45 @@
+{
+  "name": "@prosellen/astro-navigation",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "An Astro integration to create navigations.",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prosellen/astro-navigation.git"
+  },
+  "keywords": [
+    "astro",
+    "astro-integration",
+    "astro-plugin",
+    "astro-component",
+    "navigation",
+    "static-site-generator",
+    "withastro"
+  ],
+  "author": "Peter Rosellen <2063341+prosellen@users.noreply.github.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prosellen/astro-navigation/issues"
+  },
+  "homepage": "https://github.com/prosellen/astro-navigation#readme",
+  "devDependencies": {
+    "astro": "^1.5.2",
+    "dependency-graph": "^0.11.0",
+    "eslint": "^8.26.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.6.0"
+  },
+  "peerDependencies": {
+    "astro": "^1.5.2"
+  }
+}
