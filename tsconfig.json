@@ -1,3 +1,3 @@
 {
-  "extends": "astro/tsconfigs/"
+  "extends": "astro/tsconfigs/base"
 }
