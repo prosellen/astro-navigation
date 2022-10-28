@@ -13,11 +13,17 @@ export interface Props extends astroHTML.JSX.AstroBuiltinAttributes {
 const { navigationItems, maxLevel = 999 } = Astro.props as Props;
 const currentLevel = 1;
 
+// const filterNavigationItems = async function (navigationItems) {
+//   const allFiles = await Astro.glob("/src/pages/**/*.astro");
+//   allFiles.forEach((file) => console.log(file.file));
+//   return navigationItems;
+// };
+
+// const filteredNavigationItems = await filterNavigationItems(navigationItems);
 const enrichedNavigationItems = enrichNavigationItems(navigationItems);
 const dependenyGraph = getDependencyGraph(enrichedNavigationItems);
 
 const currentUrl = Astro.url.pathname;
-console.log({ currentUrl, pathname: Astro.url.pathname });
 const dependencies = dependenyGraph.dependenciesOf(currentUrl);
 ---
 
