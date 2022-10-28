@@ -1,0 +1,29 @@
+---
+import NavigationList from "./NavigationList.astro";
+import getDependencyGraph from "./utils/getDependencyGraph";
+import enrichNavigationItems from "./utils/enrichNavigationItems";
+import { NavigationItems } from "./types";
+
+export interface Props extends astroHTML.JSX.AstroBuiltinAttributes {
+  navigationItems: NavigationItems;
+  currentLevel?: number;
+  maxLevel?: number;
+}
+
+const { navigationItems, maxLevel = 999 } = Astro.props as Props;
+const currentLevel = 1;
+
+const enrichedNavigationItems = enrichNavigationItems(navigationItems);
+const dependenyGraph = getDependencyGraph(enrichedNavigationItems);
+
+const currentUrl = Astro.url.pathname;
+console.log({ currentUrl, pathname: Astro.url.pathname });
+const dependencies = dependenyGraph.dependenciesOf(currentUrl);
+---
+
+<NavigationList
+  navigationItems={enrichedNavigationItems}
+  dependencies={dependencies}
+  currentLevel={currentLevel}
+  maxLevel={maxLevel}
+/>

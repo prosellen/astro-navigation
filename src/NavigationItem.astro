@@ -1,0 +1,37 @@
+---
+import NavigationList from "./NavigationList.astro";
+
+const {
+  text,
+  url,
+  title,
+  children,
+  level,
+  maxLevel,
+  navId,
+  redirect,
+  dependencies,
+} = Astro.props;
+
+const current = url === Astro.url.pathname;
+const trail = dependencies?.find((url) => url === redirect || url);
+---
+
+<li>
+  <a
+    href={redirect || url}
+    title={title}
+    class={(current && `current`) || (trail && `trail`)}
+    role="menuitem"
+    data-nav-id={navId}>{text}</a
+  >
+  {
+    children?.length > 0 && (
+      <NavigationList
+        currentLevel={level + 1}
+        maxLevel={maxLevel}
+        navigationItems={children}
+      />
+    )
+  }
+</li>

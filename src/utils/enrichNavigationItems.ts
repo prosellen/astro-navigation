@@ -4,7 +4,7 @@ export default function enrichNavigationItems(
   navigationItems: NavigationItems,
   level = 1
 ) {
-  return navigationItems.map((item: NavigationItem) => {
+  return navigationItems?.map((item: NavigationItem) => {
     let children;
 
     // TODO: Read files and insert title, etc from Formatter Header

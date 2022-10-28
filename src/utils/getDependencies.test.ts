@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import getDependencies from "./getDependencies";
+import getDependencyGraph from "./getDependencyGraph";
 import type { NavigationItems } from "../types";
 
 const navigationItems: NavigationItems = [
@@ -24,7 +24,7 @@ const navigationItems: NavigationItems = [
 
 describe("getDependencies", () => {
   it("Should build a dependency graph", () => {
-    const graph = getDependencies(navigationItems);
+    const graph = getDependencyGraph(navigationItems);
 
     expect(graph.overallOrder()).toStrictEqual([
       "/",
@@ -37,7 +37,7 @@ describe("getDependencies", () => {
     ]);
   });
   it("Should find the expected dependencies ", () => {
-    const graph = getDependencies(navigationItems);
+    const graph = getDependencyGraph(navigationItems);
 
     expect(graph.dependantsOf("/")).toStrictEqual([]);
     expect(graph.dependenciesOf("/about-us/team/bill")).toStrictEqual([
@@ -51,7 +51,7 @@ describe("getDependencies", () => {
   });
 
   it("Should find the expected dependants", () => {
-    const graph = getDependencies(navigationItems);
+    const graph = getDependencyGraph(navigationItems);
 
     expect(graph.dependantsOf("/")).toStrictEqual([]);
     expect(graph.dependantsOf("/about-us/team/")).toStrictEqual([

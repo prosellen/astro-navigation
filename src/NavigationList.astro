@@ -1,0 +1,32 @@
+---
+import NavigationItem from "./NavigationItem.astro";
+
+const {
+  navigationItems = [],
+  currentLevel,
+  maxLevel,
+  dependencies,
+} = Astro.props;
+// console.log({ maxLevel });
+console.log(navigationItems);
+---
+
+<ul
+  class={`level_${currentLevel}`}
+  data-navigation-level={currentLevel}
+  role="menubar"
+>
+  {
+    navigationItems?.map(
+      (item) =>
+        currentLevel <= maxLevel && (
+          <NavigationItem
+            {...item}
+            currentLevel={currentLevel}
+            maxLevel={maxLevel}
+            dependencies={dependencies}
+          />
+        )
+    )
+  }
+</ul>

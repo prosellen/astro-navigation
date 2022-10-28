@@ -4,7 +4,7 @@
   "type": "module",
   "description": "An Astro integration to create navigations.",
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./src/index.ts"
   },
   "scripts": {
     "test": "vitest",
