@@ -4,6 +4,7 @@ import NavigationItem from "./NavigationItem.astro";
 const {
   navigationItems = [],
   currentLevel,
+  startLevel,
   maxLevel,
   dependencies,
 } = Astro.props;
@@ -21,6 +22,7 @@ const {
         currentLevel <= maxLevel && (
           <NavigationItem
             {...item}
+            startLevel={startLevel}
             currentLevel={currentLevel}
             maxLevel={maxLevel}
             dependencies={dependencies}

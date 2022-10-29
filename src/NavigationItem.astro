@@ -11,6 +11,7 @@ const {
   navId,
   redirect,
   dependencies,
+  startLevel,
 } = Astro.props;
 
 const current = url === Astro.url.pathname;
@@ -28,6 +29,7 @@ const trail = dependencies?.find((url) => url === redirect || url);
   {
     children?.length > 0 && (
       <NavigationList
+        startLevel={startLevel}
         currentLevel={level + 1}
         maxLevel={maxLevel}
         navigationItems={children}
