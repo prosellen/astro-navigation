@@ -1,13 +1,12 @@
-export default function getNavigationForStartUrl(url, graph) {
-  // const oneUp = graph.directDependenciesOf(url)[0] || "/";
-  return graph.getNodeData(url)?.children || [];
-}
+import { DepGraph } from "dependency-graph";
 
-// export default function findStartUrlInStructure(structure, startUrl) {
-//   return structure.find((item) => {
-//     if (item.url === startUrl) return item;
-//     if (item.children?.length > 0)
-//       return findStartUrlInStructure(item.children, startUrl);
-//     return false;
-//   });
-// }
+export default function getNavigationForStartUrl(
+  url: string,
+  graph: DepGraph<any>
+) {
+  const dependant = graph.directDependantsOf(url);
+  const navigation = dependant.map((dependantUrl) =>
+    graph.getNodeData(dependantUrl)
+  );
+  return navigation;
+}
