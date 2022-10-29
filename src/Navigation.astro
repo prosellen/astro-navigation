@@ -13,7 +13,11 @@ export interface Props extends astroHTML.JSX.AstroBuiltinAttributes {
   maxLevel?: number;
 }
 
-const { navigationItems, startLevel, maxLevel = 999 } = Astro.props as Props;
+const {
+  navigationItems,
+  startLevel = 1,
+  maxLevel = 999,
+} = Astro.props as Props;
 const currentLevel = 1;
 
 // const filterNavigationItems = async function (navigationItems) {
@@ -31,7 +35,7 @@ const currentUrl = Astro.url.pathname;
 const dependencies = dependenyGraph.dependenciesOf(currentUrl);
 
 let items;
-if (startLevel && startLevel > 1) {
+if (startLevel && startLevel > 0) {
   const startUrl = getUrlForLevel(currentUrl, startLevel, dependenyGraph);
 
   items = getNavigationForStartUrl(startUrl, dependenyGraph);

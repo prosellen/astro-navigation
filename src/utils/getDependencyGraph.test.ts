@@ -3,7 +3,7 @@ import getDependencyGraph from "./getDependencyGraph";
 import type { NavigationItems } from "../types";
 
 const navigationItems: NavigationItems = [
-  { url: "/", text: "Home" },
+  { url: "/home/", text: "Home" },
   {
     url: "/about-us/",
     text: "About Us",
@@ -28,6 +28,7 @@ describe("getDependencies", () => {
 
     expect(graph.overallOrder()).toStrictEqual([
       "/",
+      "/home/",
       "/about-us/",
       "/about-us/team/",
       "/about-us/team/bob",
@@ -39,21 +40,23 @@ describe("getDependencies", () => {
   it("Should find the expected dependencies ", () => {
     const graph = getDependencyGraph(navigationItems);
 
-    expect(graph.dependantsOf("/")).toStrictEqual([]);
+    expect(graph.dependenciesOf("/home/")).toStrictEqual(["/"]);
     expect(graph.dependenciesOf("/about-us/team/bill")).toStrictEqual([
+      "/",
       "/about-us/",
       "/about-us/team/",
     ]);
     expect(graph.dependenciesOf("/about-us/team/")).toStrictEqual([
+      "/",
       "/about-us/",
     ]);
-    expect(graph.dependenciesOf("/contact/")).toStrictEqual([]);
+    expect(graph.dependenciesOf("/contact/")).toStrictEqual(["/"]);
   });
 
   it("Should find the expected dependants", () => {
     const graph = getDependencyGraph(navigationItems);
 
-    expect(graph.dependantsOf("/")).toStrictEqual([]);
+    expect(graph.dependantsOf("/home/")).toStrictEqual([]);
     expect(graph.dependantsOf("/about-us/team/")).toStrictEqual([
       "/about-us/team/bob",
       "/about-us/team/marry",
