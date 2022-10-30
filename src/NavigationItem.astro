@@ -15,7 +15,7 @@ const {
 } = Astro.props;
 
 const current = url === Astro.url.pathname;
-const trail = dependencies?.find((url) => url === redirect || url);
+const trail = dependencies?.includes(redirect) || dependencies?.includes(url);
 ---
 
 <li>
