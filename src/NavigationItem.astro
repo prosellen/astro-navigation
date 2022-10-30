@@ -22,7 +22,7 @@ const trail = dependencies?.find((url) => url === redirect || url);
   <a
     href={redirect || url}
     title={title}
-    class={(current && `current`) || (trail && `trail`)}
+    class={(current && `active`) || (trail && `trail`)}
     role="menuitem"
     data-nav-id={navId}>{text}</a
   >
