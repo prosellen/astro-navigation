@@ -18,7 +18,7 @@ const current = url === Astro.url.pathname;
 const trail = dependencies?.includes(redirect) || dependencies?.includes(url);
 ---
 
-<li>
+<li class={(current && `active`) || (trail && `trail`)}>
   <a
     href={redirect || url}
     title={title}
