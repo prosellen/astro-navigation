@@ -35,12 +35,12 @@ if (startLevel && startLevel > 0) {
   const startUrl = getUrlForLevel(currentUrl, startLevel, dependenyGraph);
 
   items = getNavigationForStartUrl(startUrl, dependenyGraph);
-  console.log({ startUrl, items });
+  // console.log({ startUrl, items });
 } else {
   items = enrichedNavigationItems;
 }
 
-console.log(items);
+// console.log(items);
 ---
 
 <NavigationList
