@@ -13,11 +13,7 @@ export interface Props extends astroHTML.JSX.AstroBuiltinAttributes {
   maxLevel?: number;
 }
 
-const {
-  navigationItems,
-  startLevel = 1,
-  maxLevel = 999,
-} = Astro.props as Props;
+const { navigationItems, startLevel, maxLevel = 999 } = Astro.props as Props;
 const currentLevel = 1;
 
 // const filterNavigationItems = async function (navigationItems) {

@@ -1,0 +1,14 @@
+---
+import Navigation from "../../../../index";
+
+import navigationItems from "../../../utils/full-tree";
+---
+
+<h1>Custom start level</h1>
+
+<Navigation navigationItems={navigationItems} />
+
+A second instance of the component with the `startLevel` set to "2".<br /> This skips
+the first level of navigation and only shows the children of "Examples":
+
+<Navigation navigationItems={navigationItems} startLevel={2} />
