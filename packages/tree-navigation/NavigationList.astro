@@ -11,11 +11,7 @@ const {
 // console.log({ maxLevel });
 ---
 
-<ul
-  class={`level_${currentLevel}`}
-  data-navigation-level={currentLevel}
-  role="menubar"
->
+<ul class={`navigation-level-${currentLevel}`}>
   {
     navigationItems?.map(
       (item) =>

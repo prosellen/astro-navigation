@@ -9,8 +9,8 @@ import getNavigationForStartUrl from "./utils/getNavigationForStartUrl";
 export interface Props extends astroHTML.JSX.AstroBuiltinAttributes {
   navigationItems: NavigationItems;
   startLevel?: number;
-  currentLevel?: number;
   maxLevel?: number;
+  // currentLevel?: number;
 }
 
 const { navigationItems, startLevel, maxLevel = 999 } = Astro.props as Props;
