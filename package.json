@@ -23,7 +23,6 @@
     "astro",
     "astro-integration",
     "astro-plugin",
-    "astro-component",
     "navigation",
     "static-site-generator",
     "withastro"
