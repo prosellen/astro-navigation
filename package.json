@@ -1,6 +1,6 @@
 {
   "name": "@prosellen/astro-navigation",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "type": "module",
   "description": "An Astro integration to create navigation trees.",
   "workspaces": [
