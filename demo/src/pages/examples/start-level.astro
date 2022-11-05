@@ -1,14 +1,18 @@
 ---
+import Layout from "../../layouts/Layout.astro";
 import Navigation from "../../../../index";
 
 import navigationItems from "../../../utils/full-tree";
 ---
 
-<h1>Custom start level</h1>
+<Layout>
+  <Navigation navigationItems={navigationItems} slot="navigation" />
+  <h2>Custom start level</h2>
+  <p>
+    You can use "startLevel" to skip level in the tree. This is useful if you
+    only want to show sibling nodes and their chuld nodes. For example when you
+    don't want to show the top-level navigation in sub-pages.
+  </p>
 
-<Navigation navigationItems={navigationItems} />
-
-A second instance of the component with the `startLevel` set to "2".<br /> This skips
-the first level of navigation and only shows the children of "Examples":
-
-<Navigation navigationItems={navigationItems} startLevel={2} />
+  <Navigation navigationItems={navigationItems} startLevel={2} />
+</Layout>

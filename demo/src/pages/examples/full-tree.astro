@@ -1,9 +1,20 @@
 ---
+import Layout from "../../layouts/Layout.astro";
 import Navigation from "../../../../index";
 
 import navigationItems from "../../../utils/full-tree";
 ---
 
-<h1>Full tree example</h1>
+<Layout>
+  <Navigation
+    navigationItems={navigationItems}
+    currentLevel={1}
+    slot="navigation"
+  />
 
-<Navigation navigationItems={navigationItems} currentLevel={1} />
+  <h2>Full Tree Example</h2>
+  <p>
+    You can see the full navigation tree on the left - and that's pretty much
+    all this page has to offer.
+  </p>
+</Layout>

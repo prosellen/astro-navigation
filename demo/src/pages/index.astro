@@ -1,19 +1,21 @@
 ---
+import Layout from "../layouts/Layout.astro";
 import Navigation from "../../../index";
 
 import navigationItems from "../../utils/full-tree";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1>Astro Navigation</h1>
-    <Navigation navigationItems={navigationItems} />
-  </body>
-</html>
+<Layout>
+  <Navigation navigationItems={navigationItems} slot="navigation" />
+  <h2>Example Home</h2>
+  <p>This is the example homepage the Navigation component.</p>
+  <p>
+    The navigation on the left is rendert by the component and shows all
+    elements from the "navigationItems" object.<br />
+    All nodes in the navigation items object need a unique "url" to build the dependency
+    graph. But sometimes you don't have a an "index" page for a submenu item - like
+    the navigation item "Examples" which redirects to "Full Tree Example". This is
+    done by given the item a separate "redirect", which points to the actual page
+    you want to link to.
+  </p>
+</Layout>

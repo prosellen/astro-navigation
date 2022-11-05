@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header><h1>Astro Navigation</h1></header>
+      <aside>
+        <nav>
+          <slot name="navigation" />
+        </nav>
+      </aside>
+      <main>
+        <slot />
+      </main>
+    </div>
+    <style is:inline>
+      .container {
+        display: grid;
+
+        grid-template-columns: 25% auto;
+        grid-template-rows: auto;
+        gap: 1rem;
+        grid-template-areas:
+          "header header"
+          "navigation content";
+      }
+
+      header {
+        grid-area: header;
+      }
+
+      aside {
+        grid-area: navigation;
+      }
+
+      main {
+        grid-area: content;
+      }
+
+      h2 {
+        margin: 1.5rem 0 0.25rem;
+      }
+
+      nav {
+        padding: 1rem;
+        background-color: rgb(213, 213, 213);
+      }
+
+      nav ul {
+        margin: 0;
+        padding: 0 0 0 1.25rem;
+        list-style: none;
+      }
+      nav > ul {
+        padding-left: 0;
+      }
+
+      nav li {
+        padding: 0.15;
+      }
+
+      nav a {
+        display: block;
+        padding: 0.15rem 0;
+        text-decoration: none;
+      }
+
+      nav li.active > a,
+      nav li.trail > a {
+        text-decoration: underline;
+      }
+    </style>
+  </body>
+</html>
