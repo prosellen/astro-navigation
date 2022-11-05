@@ -60,5 +60,8 @@ jspm_packages/
 # compiled TypesScript files (TS will compile with Astro)
 dist
 
+# demo files for
+demo/
+
 # Test files
 **/*.test.ts

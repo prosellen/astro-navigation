@@ -2,9 +2,14 @@
   "name": "@prosellen/astro-navigation",
   "version": "0.3.1",
   "type": "module",
-  "description": "An Astro integration to create navigations.",
+  "description": "An Astro integration to create navigation trees.",
+  "workspaces": [
+    "demo",
+    "packages/*"
+  ],
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./index.ts",
+    "./tree-navigation": "./Navigation"
   },
   "scripts": {
     "test": "vitest",
