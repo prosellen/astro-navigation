@@ -1,0 +1,42 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navigation from "../../../../index";
+
+import navigationItems from "../../../utils/full-tree";
+
+const partialTree = [
+  { url: "/", text: "Home" },
+  {
+    url: "/examples/",
+    text: 'Examples (will skip to "Full Tree Example")',
+    redirect: "/examples/full-tree/",
+    children: [
+      {
+        url: "/examples/full-tree/",
+        text: "Full Tree Example",
+      },
+      {
+        url: "/examples/custom-tree/",
+        text: "Custom Tree",
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <Navigation navigationItems={navigationItems} slot="navigation" />
+
+  <h2>Partial Trees</h2>
+  <p>
+    Sometimes you might only want to show certain parts of a navigation ... but
+    without losing the sweet, sweet `active` class on the navigation item.
+    <br />
+    In these cases, you can supply a custom array of navigation items.
+  </p>
+  <p></p>
+
+  <nav>
+    <Navigation navigationItems={partialTree} maxLevel={2} />
+  </nav>
+</Layout>

@@ -45,6 +45,10 @@ const fullTree = [
           },
         ],
       },
+      {
+        url: "/examples/custom-tree/",
+        text: "Custom Tree",
+      },
     ],
   },
 ];

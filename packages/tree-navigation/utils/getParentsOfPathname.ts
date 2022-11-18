@@ -13,9 +13,19 @@ export default function getParentsOfPathname(
 ): string[] {
   let parentsOfPathname = [];
   try {
-    parentsOfPathname = dependencyGraph.dependenciesOf(pathname);
+    parentsOfPathname = dependencyGraph.dependenciesOf("pathname");
   } catch (error) {
     console.error(`${pathname}: ${error.message}`);
+  }
+
+  // If none where found, we'll brut-force it. #yolo
+  if (parentsOfPathname.length === 0) {
+    const pathSegments = pathname.replace(/^\/|\/$/g, "").split("/");
+    let allSegments = "/";
+    pathSegments.forEach((segment) => {
+      allSegments = `${allSegments + segment}/`;
+      parentsOfPathname.push(allSegments);
+    });
   }
 
   return parentsOfPathname;
