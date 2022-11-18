@@ -10,12 +10,13 @@ const {
   maxLevel,
   navId,
   redirect,
-  dependencies,
+  parentPathnames,
   startLevel,
 } = Astro.props;
 
 const current = url === Astro.url.pathname;
-const trail = dependencies?.includes(redirect) || dependencies?.includes(url);
+const trail =
+  parentPathnames?.includes(redirect) || parentPathnames?.includes(url);
 ---
 
 <li class={(current && `active`) || (trail && `trail`)}>

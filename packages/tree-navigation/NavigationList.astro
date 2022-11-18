@@ -6,7 +6,7 @@ const {
   currentLevel,
   startLevel,
   maxLevel,
-  dependencies,
+  parentPathnames,
 } = Astro.props;
 // console.log({ maxLevel });
 ---
@@ -21,7 +21,7 @@ const {
             startLevel={startLevel}
             currentLevel={currentLevel}
             maxLevel={maxLevel}
-            dependencies={dependencies}
+            parentPathnames={parentPathnames}
           />
         )
     )

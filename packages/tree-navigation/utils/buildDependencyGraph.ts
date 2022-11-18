@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { DepGraph } from "dependency-graph";
 import type { NavigationItems } from "../types";
 

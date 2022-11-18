@@ -5,6 +5,7 @@ import enrichNavigationItems from "./utils/enrichNavigationItems";
 import { NavigationItems } from "./types";
 import getStartLevelPathname from "./utils/getStartLevelPathname";
 import getNavigationItemsFromPathname from "./utils/getNavigationItemsFromPathname";
+import getParentsOfPathname from "./utils/getParentsOfPathname";
 
 export interface Props extends astroHTML.JSX.AstroBuiltinAttributes {
   navigationItems: NavigationItems;
@@ -28,7 +29,7 @@ const enrichedNavigationItems = enrichNavigationItems(navigationItems);
 const dependenyGraph = getDependencyGraph(enrichedNavigationItems);
 
 const currentPathname = Astro.url.pathname;
-const dependencies = dependenyGraph.dependenciesOf(currentPathname);
+const parentPathnames = getParentsOfPathname(currentPathname, dependenyGraph);
 
 let items;
 if (startLevel && startLevel > 0) {
@@ -49,7 +50,7 @@ if (startLevel && startLevel > 0) {
 
 <NavigationList
   navigationItems={items}
-  dependencies={dependencies}
+  parentPathnames={parentPathnames}
   currentLevel={currentLevel}
   startLevel={startLevel}
   maxLevel={maxLevel}
