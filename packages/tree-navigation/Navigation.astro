@@ -3,7 +3,7 @@ import NavigationList from "./NavigationList.astro";
 import getDependencyGraph from "./utils/getDependencyGraph";
 import enrichNavigationItems from "./utils/enrichNavigationItems";
 import { NavigationItems } from "./types";
-import getUrlForLevel from "./utils/getUrlForLevel";
+import getStartLevelPathname from "./utils/getStartLevelPathname";
 import getNavigationForStartUrl from "./utils/getNavigationForStartUrl";
 
 export interface Props extends astroHTML.JSX.AstroBuiltinAttributes {
@@ -32,7 +32,11 @@ const dependencies = dependenyGraph.dependenciesOf(currentUrl);
 
 let items;
 if (startLevel && startLevel > 0) {
-  const startUrl = getUrlForLevel(currentUrl, startLevel, dependenyGraph);
+  const startUrl = getStartLevelPathname(
+    currentUrl,
+    startLevel,
+    dependenyGraph
+  );
 
   items = getNavigationForStartUrl(startUrl, dependenyGraph);
   // console.log({ startUrl, items });

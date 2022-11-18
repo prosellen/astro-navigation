@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import getUrlForLevel from "./getUrlForLevel";
+import getStartLevelPathname from "./getStartLevelPathname";
 import type { NavigationItems } from "../types";
 import getDependencyGraph from "./getDependencyGraph";
 
@@ -61,7 +61,7 @@ describe("getDependencies", () => {
     "Should find a start url for '%s' for level '%s' to be '%s'",
     (currentUrl, level, startUrl) => {
       const graph = getDependencyGraph(navigationItems);
-      const urlOfStartLevel = getUrlForLevel(currentUrl, level, graph);
+      const urlOfStartLevel = getStartLevelPathname(currentUrl, level, graph);
 
       expect(urlOfStartLevel).toStrictEqual(startUrl);
     }
