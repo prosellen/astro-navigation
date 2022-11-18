@@ -8,12 +8,16 @@ import navigationItems from "../../../utils/full-tree";
 <Layout>
   <Navigation navigationItems={navigationItems} slot="navigation" />
   <h2>Limit the levels that should be shown</h2>
-  You can limit the depth of the nvigation tree by setting a "maxLevel". Notice how
-  the navigation stops at level 4:
-
-  <Navigation navigationItems={navigationItems} maxLevel={4} />
+  <p>
+    You can limit the depth of the nvigation tree by setting a "maxLevel".
+    Notice how the navigation stops at level 4:
+  </p>
+  <nav>
+    <Navigation navigationItems={navigationItems} maxLevel={4} />
+  </nav>
   <h2>Combine level limitation with start level</h2>
-  You can combine "maxLevel" with "startLevel":
-
-  <Navigation navigationItems={navigationItems} startLevel={2} maxLevel={4} />
+  <p>You can combine "maxLevel" with "startLevel":</p>
+  <nav>
+    <Navigation navigationItems={navigationItems} startLevel={2} maxLevel={4} />
+  </nav>
 </Layout>

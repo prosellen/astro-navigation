@@ -48,9 +48,24 @@
         margin: 1.5rem 0 0.25rem;
       }
 
+      h2:first-child {
+        margin-top: 0;
+      }
+
       nav {
         padding: 1rem;
         background-color: rgb(213, 213, 213);
+      }
+
+      main nav {
+        background-color: beige;
+      }
+
+      main nav li.active > a::after {
+        content: "⬅ Current";
+        position: absolute;
+        margin-left: 0.5rem;
+        font-size: 0.75rem;
       }
 
       nav ul {
@@ -70,8 +85,11 @@
         display: block;
         padding: 0.15rem 0;
         text-decoration: none;
+        color: rgb(0, 0, 0);
       }
-
+      nav a:visited {
+        color: rgb(0, 0, 0);
+      }
       nav li.active > a,
       nav li.trail > a {
         text-decoration: underline;
