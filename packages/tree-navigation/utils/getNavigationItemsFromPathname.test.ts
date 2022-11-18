@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import getNavigationForStartUrl from "./getNavigationForStartUrl";
+import getNavigationItemsFromPathname from "./getNavigationItemsFromPathname";
 import type { NavigationItems } from "../types";
 import getDependencyGraph from "./getDependencyGraph";
 
@@ -44,7 +44,7 @@ describe("getDependencies", () => {
     "Should return the navigation tree for the start url '%s'",
     (url, object) => {
       const graph = getDependencyGraph(navigationItems);
-      const navigationTree = getNavigationForStartUrl(url, graph);
+      const navigationTree = getNavigationItemsFromPathname(url, graph);
 
       expect(navigationTree).toStrictEqual(object);
     }
