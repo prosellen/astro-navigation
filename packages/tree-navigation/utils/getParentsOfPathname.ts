@@ -13,7 +13,7 @@ export default function getParentsOfPathname(
 ): string[] {
   let parentsOfPathname = [];
   try {
-    parentsOfPathname = dependencyGraph.dependenciesOf("pathname");
+    parentsOfPathname = dependencyGraph.dependenciesOf(pathname);
   } catch (error) {
     console.error(`${pathname}: ${error.message}`);
   }
