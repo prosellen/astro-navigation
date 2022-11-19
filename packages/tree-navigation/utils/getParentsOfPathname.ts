@@ -12,14 +12,11 @@ export default function getParentsOfPathname(
   dependencyGraph: DepGraph<any>
 ): string[] {
   let parentsOfPathname = [];
-  try {
-    parentsOfPathname = dependencyGraph.dependenciesOf(pathname);
-  } catch (error) {
-    console.error(`${pathname}: ${error.message}`);
-  }
 
-  // If none where found, we'll brut-force it. #yolo
-  if (parentsOfPathname.length === 0) {
+  if (dependencyGraph.hasNode(pathname)) {
+    parentsOfPathname = dependencyGraph.dependenciesOf(pathname);
+  } else {
+    // If none where found, we'll brut-force it. #yolo
     const pathSegments = pathname.replace(/^\/|\/$/g, "").split("/");
     let allSegments = "/";
     pathSegments.forEach((segment) => {

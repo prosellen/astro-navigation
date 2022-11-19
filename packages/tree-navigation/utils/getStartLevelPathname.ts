@@ -13,14 +13,29 @@ export default function getStartLevelPathname(
   startLevel: number,
   dependencyGraph: DepGraph<any>
 ): string {
-  const dependenciesOfCurrentUrl =
+  const dependenciesOfCurrentPathname =
     dependencyGraph.dependenciesOf(currentPathname);
 
-  const dep =
-    dependenciesOfCurrentUrl.find((url) => {
-      const { level: itemLevel } = dependencyGraph.getNodeData(url);
+  // Traverse up to find the the node with the given startLevel
+  // If we can't find it, it might be because the startLevel is to high - so take the current pathname
+  const startLevelItem =
+    dependenciesOfCurrentPathname.find((pathname) => {
+      const { level: itemLevel } = dependencyGraph.getNodeData(pathname);
       return itemLevel === startLevel;
     }) || currentPathname;
 
-  return dependencyGraph.directDependenciesOf(dep)[0] || "/";
+  // If there is a dependency for the startLevel item: return that
+  if (
+    dependencyGraph.hasNode(startLevelItem) &&
+    dependencyGraph.directDependenciesOf(startLevelItem)[0] !== undefined
+  ) {
+    return dependencyGraph.directDependenciesOf(startLevelItem)[0];
+  }
+
+  // If we're not supposed to be at root level, return the currentPathname
+  if (startLevel > 1) {
+    return currentPathname;
+  }
+
+  return "/";
 }

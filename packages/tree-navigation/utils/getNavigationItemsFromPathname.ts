@@ -12,16 +12,15 @@ export default function getNavigationItemsFromPathname(
   pathname: string,
   dependencyGraph: DepGraph<any>
 ): NavigationItems {
-  let directChildren = [];
-  try {
-    directChildren = dependencyGraph.directDependantsOf(pathname);
-  } catch (error) {
-    console.error(`${pathname}: ${error.message}`);
-  }
+  let navigation = [];
 
-  const navigation = directChildren.map((dependantUrl) =>
-    dependencyGraph.getNodeData(dependantUrl)
-  );
+  if (dependencyGraph.hasNode(pathname)) {
+    const directChildren = dependencyGraph.directDependantsOf(pathname);
+
+    navigation = directChildren.map((dependantUrl) =>
+      dependencyGraph.getNodeData(dependantUrl)
+    );
+  }
 
   return navigation;
 }
