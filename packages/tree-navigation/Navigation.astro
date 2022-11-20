@@ -6,6 +6,7 @@ import { NavigationItems } from "./types";
 import getStartLevelPathname from "./utils/getStartLevelPathname";
 import getNavigationItemsFromPathname from "./utils/getNavigationItemsFromPathname";
 import getParentsOfPathname from "./utils/getParentsOfPathname";
+import getAstroPathname from "./utils/getAstroPathname";
 
 export interface Props extends astroHTML.JSX.AstroBuiltinAttributes {
   navigationItems: NavigationItems;
@@ -28,7 +29,8 @@ const currentLevel = 1;
 const enrichedNavigationItems = enrichNavigationItems(navigationItems);
 const dependenyGraph = getDependencyGraph(enrichedNavigationItems);
 
-const currentPathname = Astro.url.pathname;
+let currentPathname = getAstroPathname(Astro.url.pathname);
+
 const parentPathnames = getParentsOfPathname(currentPathname, dependenyGraph);
 
 let items;

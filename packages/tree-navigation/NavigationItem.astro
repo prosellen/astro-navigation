@@ -1,5 +1,6 @@
 ---
 import NavigationList from "./NavigationList.astro";
+import getAstroPathname from "./utils/getAstroPathname";
 
 const {
   text,
@@ -14,7 +15,7 @@ const {
   startLevel,
 } = Astro.props;
 
-const current = url === Astro.url.pathname;
+const current = url === getAstroPathname(Astro.url.pathname);
 const trail =
   parentPathnames?.includes(redirect) || parentPathnames?.includes(url);
 ---
