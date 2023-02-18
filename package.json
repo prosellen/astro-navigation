@@ -12,8 +12,11 @@
     "./tree-navigation": "./Navigation"
   },
   "scripts": {
-    "test": "vitest",
-    "lint": "eslint . --ext .ts"
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "lint": "eslint . --ext .ts",
+    "preversion": "npm run lint && npm run test",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
