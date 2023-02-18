@@ -15,7 +15,7 @@ const {
   {
     navigationItems?.map(
       (item) =>
-        currentLevel <= maxLevel && (
+        maxLevel > currentLevel && (
           <NavigationItem
             {...item}
             startLevel={startLevel}
