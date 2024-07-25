@@ -55,6 +55,6 @@
     "vitest": "0.24.3"
   },
   "peerDependencies": {
-    "astro": "^1.5.2 || ^2.0.14"
+    "astro": ">=1.5.2"
   }
 }
